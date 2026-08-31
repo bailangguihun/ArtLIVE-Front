@@ -1,0 +1,41 @@
+# Source backups can contain historical credentials and are not distributable source.
+my_agent_backup*/
+
+# Shared cache remains outside normal application commits.
+hf_cache/
+
+# Local platform and runtime state at the project boundary.
+/.app_runtime/
+/.autodl/
+/.pytest_cache/
+/migration_backups/
+/scripts/
+/*.cmd
+/*.ps1
+
+# Historical audits, acceptance evidence, deliveries, and rollback sources.
+/workflow_v2_*/
+/runtime-repair-*/
+/github_public_release_*/
+/*evidence*/
+/*backup*/
+/*delivery*/
+/*golden*/
+/*qa*/
+
+# Never admit application secrets from the monorepo root.
+/my_agent/.env
+/my_agent/.env.*
+!/my_agent/.env.example
+/my_agent/*.pem
+/my_agent/*.key
+/my_agent/*.p12
+/my_agent/*.pfx
+/my_agent/credentials*.json
+/my_agent/secrets*.json
+
+# Host/editor metadata that is never part of the public candidate.
+**/.DS_Store
+**/Thumbs.db
+**/.idea/
+**/.vscode/

@@ -1,0 +1,224 @@
+.app-shell {
+  width: 100%;
+  margin: 0;
+  padding: 0 1.75rem var(--space-8);
+  background: var(--color-page-canvas);
+  color: var(--color-text-primary);
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  min-height: 5.25rem;
+  border-bottom: var(--border-width) solid var(--color-border-strong);
+}
+
+.app-header--basic {
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: var(--space-3) 0;
+}
+
+.app-identity {
+  color: var(--color-link);
+  font-size: 2.25rem;
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.app-identity--button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-link);
+  text-align: left;
+  cursor: pointer;
+}
+
+.app-identity--button:disabled {
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.app-header__home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0 var(--space-5);
+  border: var(--border-width) solid var(--color-action-primary);
+  background: var(--color-action-primary);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-bold);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.app-header__home:hover:not(:disabled) {
+  border-color: var(--color-action-primary-hover);
+  background: var(--color-action-primary-hover);
+  color: var(--color-text-inverse);
+}
+
+.app-header__home:active:not(:disabled) {
+  border-color: var(--color-action-primary-pressed);
+  background: var(--color-action-primary-pressed);
+  color: var(--color-text-inverse);
+}
+
+.app-header__home:disabled {
+  border-color: var(--color-disabled-border);
+  background: var(--color-disabled-surface);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.workflow-rail {
+  width: 100%;
+  margin-top: var(--space-4);
+}
+
+.workflow-rail__track {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  border: var(--border-width) solid var(--color-border-strong);
+  background: var(--color-workflow-future);
+  list-style: none;
+}
+
+.workflow-rail__item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  min-width: 0;
+  min-height: 5.25rem;
+  gap: var(--space-3);
+  padding: 0 var(--space-5);
+  line-height: 1.1;
+}
+
+.workflow-rail__item + .workflow-rail__item {
+  border-left: var(--border-width) solid var(--color-border-strong);
+}
+
+.workflow-rail__number {
+  font-size: 2.5rem;
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.06em;
+  line-height: 1;
+}
+
+.workflow-rail__label {
+  min-width: 0;
+  font-size: 1.125rem;
+  font-weight: var(--weight-bold);
+  overflow-wrap: anywhere;
+}
+
+.workflow-rail__item--active {
+  background: var(--gradient-workflow-current);
+  color: var(--color-workflow-current-text);
+}
+
+.workflow-rail__item--complete {
+  background: var(--color-workflow-completed);
+  color: var(--color-workflow-completed-text);
+}
+
+.workflow-rail__item--future {
+  background: var(--color-workflow-future);
+  color: var(--color-workflow-future-text);
+}
+
+.app-main {
+  padding-top: 2.5rem;
+}
+
+@media (max-width: 68rem) {
+  .app-shell {
+    padding-right: var(--space-6);
+    padding-left: var(--space-6);
+  }
+}
+
+@media (max-width: 48rem) {
+  .app-shell {
+    padding: 0 var(--space-4) var(--space-7);
+  }
+
+  .app-header {
+    min-height: 4rem;
+  }
+
+  .app-header--basic {
+    align-items: flex-start;
+    min-height: 0;
+    flex-wrap: wrap;
+    padding: var(--space-4) 0;
+  }
+
+  .app-identity {
+    font-size: 1.5rem;
+  }
+
+  .app-header__home {
+    min-height: 2.75rem;
+    margin-left: auto;
+  }
+
+  .workflow-rail__item {
+    grid-template-columns: minmax(0, 1fr);
+    align-content: center;
+    min-height: 5.25rem;
+    gap: var(--space-1);
+    padding: var(--space-3) var(--space-2);
+  }
+
+  .workflow-rail__number {
+    font-size: 1.75rem;
+  }
+
+  .workflow-rail__label {
+    font-size: var(--font-size-sm);
+  }
+
+  .app-main {
+    padding-top: var(--space-6);
+  }
+}
+
+@media (max-height: 50rem) and (min-width: 52.0625rem) {
+  .app-header {
+    min-height: 4rem;
+  }
+
+  .app-header--basic {
+    min-height: 4rem;
+    padding: var(--space-2) 0;
+  }
+
+  .app-identity {
+    font-size: 1.75rem;
+  }
+
+  .workflow-rail__item {
+    min-height: 3.75rem;
+    padding: 0 var(--space-4);
+  }
+
+  .workflow-rail__number {
+    font-size: 2rem;
+  }
+
+  .app-main {
+    padding-top: var(--space-5);
+  }
+}

@@ -1,0 +1,123 @@
+@import './tokens.css';
+@import './components.css';
+@import './layout.css';
+@import './product-info.css';
+@import './platform-copy.css';
+@import './poster-generation.css';
+@import './poster-editor.css';
+@import './detail-editor.css';
+@import './marketing-strategy.css';
+@import './final-results.css';
+@import './marketing-advice.css';
+@import './creation-workspace.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  background: var(--color-page-canvas);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+}
+
+body {
+  margin: 0;
+  min-width: 20rem;
+  min-height: 100vh;
+  border: var(--border-width) solid var(--color-border-strong);
+  background: var(--color-page-canvas);
+  color: var(--color-text-primary);
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+}
+
+button,
+label[for] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a[href]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-offset);
+  box-shadow: 0 0 0 var(--focus-offset) var(--color-focus-keyline);
+}
+
+.file-input:focus-visible + .product-image-canvas,
+.poster-file-control:has(input:focus-visible),
+.detail-file-control:has(input:focus-visible),
+.copy-variant__radio:focus-visible + .copy-variant__heading,
+.poster-style-template__card:focus-within,
+.poster-stage__text-target:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus-ring);
+  outline-offset: var(--focus-offset);
+  box-shadow: 0 0 0 var(--focus-offset) var(--color-focus-keyline);
+}
+
+button {
+  border-radius: 0;
+}
+
+::selection {
+  background: var(--color-selection-surface);
+  color: var(--color-selection-text);
+}
+
+a:link {
+  color: var(--color-link);
+}
+
+a:visited {
+  color: var(--color-link-visited);
+}
+
+a:hover,
+a:active {
+  color: var(--color-link-hover);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-placeholder);
+  opacity: 1;
+}
+
+.poster-inspector__properties,
+.detail-page-list,
+.detail-inspector__scroll {
+  scrollbar-color: var(--color-scrollbar-thumb) var(--color-scrollbar-track);
+}
+
+@media (forced-colors: active) {
+  button:focus-visible,
+  a[href]:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible,
+  .file-input:focus-visible + .product-image-canvas,
+  .poster-file-control:has(input:focus-visible),
+  .detail-file-control:has(input:focus-visible),
+  .copy-variant__radio:focus-visible + .copy-variant__heading,
+  .poster-style-template__card:focus-within,
+  .poster-stage__text-target:focus-visible {
+    outline: var(--focus-width) solid Highlight;
+    outline-offset: var(--focus-offset);
+    box-shadow: none;
+  }
+}

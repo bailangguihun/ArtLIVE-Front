@@ -1,0 +1,89 @@
+.home-button,
+.primary-action,
+.text-action {
+  border: var(--border-width) solid var(--color-action-secondary-border);
+  border-radius: 0;
+  font-weight: var(--weight-bold);
+  cursor: pointer;
+}
+
+.home-button--primary,
+.primary-action {
+  border-color: var(--color-action-primary);
+  background: var(--color-action-primary);
+  color: var(--color-text-inverse);
+}
+
+.home-button--primary:hover:not(:disabled),
+.primary-action:hover:not(:disabled) {
+  border-color: var(--color-action-primary-hover);
+  background: var(--color-action-primary-hover);
+  color: var(--color-text-inverse);
+}
+
+.home-button--primary:active:not(:disabled),
+.primary-action:active:not(:disabled) {
+  border-color: var(--color-action-primary-pressed);
+  background: var(--color-action-primary-pressed);
+  color: var(--color-text-inverse);
+}
+
+.home-button--secondary {
+  border-color: var(--color-action-secondary-border);
+  background: var(--color-action-secondary-surface);
+  color: var(--color-action-secondary-text);
+}
+
+.home-button--secondary:hover:not(:disabled) {
+  background: var(--color-action-secondary-hover-surface);
+}
+
+.home-button--secondary:active:not(:disabled) {
+  background: var(--color-action-secondary-pressed-surface);
+}
+
+.text-action {
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-link);
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+.text-action:hover:not(:disabled):not([aria-disabled='true']) {
+  background: var(--color-interactive-hover-surface);
+  color: var(--color-link-hover);
+}
+
+.text-action:active:not(:disabled):not([aria-disabled='true']) {
+  background: var(--color-action-secondary-pressed-surface);
+  color: var(--color-link-hover);
+}
+
+.home-button.home-button--destructive {
+  border-color: var(--color-action-destructive);
+  background: var(--color-surface-default);
+  color: var(--color-action-destructive);
+}
+
+.home-button.home-button--destructive:hover:not(:disabled) {
+  background: var(--color-action-destructive-hover-surface);
+  color: var(--color-action-destructive);
+}
+
+.home-button.home-button--destructive:active:not(:disabled) {
+  background: var(--color-action-destructive-pressed-surface);
+  color: var(--color-action-destructive);
+}
+
+.home-button:disabled,
+.primary-action:disabled,
+.text-action:disabled,
+.text-action[aria-disabled='true'] {
+  border-color: var(--color-disabled-border);
+  background: var(--color-disabled-surface);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+  opacity: 1;
+}

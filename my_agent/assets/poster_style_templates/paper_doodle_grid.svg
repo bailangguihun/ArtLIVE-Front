@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title desc">
+  <title id="title">纸上奇想四格 preview</title>
+  <desc id="desc">Warm paper 2x2 grid poster with black doodles and realistic product packaging.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fffdf9"/>
+      <stop offset="100%" stop-color="#f6efe4"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#f3ece2"/>
+      <stop offset="100%" stop-color="#e7ddd0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#paper)"/>
+  <rect x="0" y="0" width="600" height="800" fill="#f7f2ea" opacity="0.35"/>
+
+  <!-- 2x2 grid panels -->
+  <g filter="url(#shadow)">
+    <rect x="54" y="96" width="236" height="286" fill="#fffdf8"/>
+    <rect x="310" y="96" width="236" height="286" fill="#fffdf8"/>
+    <rect x="54" y="402" width="236" height="286" fill="#fffdf8"/>
+    <rect x="310" y="402" width="236" height="286" fill="#fffdf8"/>
+  </g>
+
+  <!-- products -->
+  <g>
+    <rect x="118" y="188" width="78" height="108" rx="4" fill="url(#box)" stroke="#d9cfc2" stroke-width="1"/>
+    <rect x="374" y="184" width="78" height="112" rx="4" fill="url(#box)" stroke="#d9cfc2" stroke-width="1"/>
+    <rect x="118" y="494" width="78" height="108" rx="4" fill="url(#box)" stroke="#d9cfc2" stroke-width="1"/>
+    <rect x="374" y="490" width="78" height="112" rx="4" fill="url(#box)" stroke="#d9cfc2" stroke-width="1"/>
+    <rect x="132" y="206" width="50" height="8" fill="#1a1a1a" opacity="0.75"/>
+    <rect x="388" y="202" width="50" height="8" fill="#1a1a1a" opacity="0.75"/>
+    <rect x="132" y="512" width="50" height="8" fill="#1a1a1a" opacity="0.75"/>
+    <rect x="388" y="508" width="50" height="8" fill="#1a1a1a" opacity="0.75"/>
+  </g>
+
+  <!-- doodles: flight -->
+  <g fill="none" stroke="#111" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M88 150c18-10 36-10 54 0"/>
+    <path d="M96 132c8-12 16-12 24 0"/>
+    <path d="M214 142l12 8 10-12"/>
+    <path d="M150 156l18-6"/>
+    <circle cx="102" cy="124" r="3" fill="#111" stroke="none"/>
+    <circle cx="228" cy="130" r="3" fill="#111" stroke="none"/>
+    <!-- sports -->
+    <path d="M334 300c40-18 72-18 104 0"/>
+    <path d="M360 286l24 28"/>
+    <path d="M430 292c-8 10-8 20 0 30"/>
+    <!-- music -->
+    <path d="M92 500c10-8 20-8 30 0"/>
+    <circle cx="214" cy="470" r="10"/>
+    <path d="M214 470v34"/>
+  </g>
+  <g fill="#111">
+    <path d="M206 458c4-6 8-6 12 0v8c-4 6-8 6-12 0z"/>
+    <path d="M452 456c4-6 8-6 12 0v8c-4 6-8 6-12 0z"/>
+    <path d="M206 650c4-6 8-6 12 0v8c-4 6-8 6-12 0z"/>
+    <path d="M452 648c4-6 8-6 12 0v8c-4 6-8 6-12 0z"/>
+  </g>
+  <!-- portal doodles -->
+  <g fill="none" stroke="#111" stroke-width="2.8" stroke-linecap="round">
+    <path d="M334 500c28 0 28 40 0 40s-28-40 0-40z"/>
+    <path d="M428 520l18 12-18 12"/>
+    <path d="M360 640l14-18 14 18"/>
+  </g>
+
+  <!-- brand accents -->
+  <circle cx="88" cy="88" r="7" fill="#e63946"/>
+  <circle cx="512" cy="712" r="7" fill="#e63946"/>
+
+  <!-- light editorial type -->
+  <g font-family="Georgia, 'Times New Roman', serif" fill="#1a1a1a" text-anchor="middle" opacity="0.82">
+    <text x="300" y="72" font-size="15" letter-spacing="5">BRAND PLAY</text>
+    <text x="300" y="748" font-size="11" letter-spacing="3" opacity="0.55">COLLECTIBLE POSTER</text>
+  </g>
+</svg>

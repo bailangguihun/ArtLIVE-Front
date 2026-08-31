@@ -1,0 +1,151 @@
+.marketing-advice-step {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, var(--content-max-width));
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 4.5rem) 0;
+  color: var(--color-text-primary);
+}
+
+.marketing-advice-intro {
+  order: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  padding-bottom: var(--space-6);
+  border-bottom: var(--border-width) solid var(--color-border-strong);
+}
+
+.marketing-advice-intro h1,
+.marketing-advice-step--loading h1,
+.marketing-advice-step--error h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.marketing-advice-layout {
+  order: 1;
+  padding: clamp(2rem, 5vw, 4.5rem) 0;
+  background: var(--color-surface-default);
+}
+
+.marketing-advice-strategy > span {
+  width: fit-content;
+  padding: var(--space-1) var(--space-2);
+  border: var(--border-width) solid var(--color-border-primary);
+  background: var(--color-info-surface);
+  color: var(--color-info-text);
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-bold);
+}
+
+.marketing-advice-low-confidence {
+  margin: 0 0 var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-width) solid var(--color-warning-text);
+  background: var(--color-warning-surface);
+  color: var(--color-warning-text);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-copy);
+}
+
+.marketing-advice-strategy {
+  display: grid;
+  align-content: start;
+  gap: var(--space-4);
+  max-width: 42rem;
+}
+
+.marketing-advice-strategy h2 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: clamp(2rem, 4vw, 3.75rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+
+.marketing-advice-one-liner {
+  margin: 0 0 var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.6;
+}
+
+.marketing-advice-list-block {
+  padding-top: var(--space-4);
+  border-top: var(--border-width) solid var(--color-border-primary);
+}
+
+.marketing-advice-list-block h3 { margin: 0; color: var(--color-text-primary); font-size: var(--font-size-md); }
+.marketing-advice-list-block ul { display: grid; gap: var(--space-2); margin: var(--space-3) 0 0; padding-left: 1.25rem; color: var(--color-text-secondary); line-height: var(--line-height-copy); }
+.marketing-advice-list-block p { margin: var(--space-3) 0 0; color: var(--color-text-secondary); line-height: var(--line-height-copy); }
+
+.marketing-advice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.marketing-advice-intro .marketing-advice-actions {
+  margin-left: auto;
+}
+
+.marketing-advice-step--loading,
+.marketing-advice-step--error {
+  display: grid;
+  align-content: start;
+  gap: var(--space-6);
+  min-height: 30rem;
+}
+
+.marketing-advice-loading {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 38rem;
+  padding: var(--space-6);
+  border-top: var(--border-width) solid var(--color-border-primary);
+  border-bottom: var(--border-width) solid var(--color-border-primary);
+  background: var(--color-info-surface);
+  color: var(--color-info-text);
+}
+
+.marketing-advice-loading strong { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+.marketing-advice-loading p,
+.marketing-advice-step--error > p { margin: 0; line-height: var(--line-height-copy); }
+
+.marketing-advice-step--error > p[role='alert'] {
+  max-width: 38rem;
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--color-error-text);
+  background: var(--color-error-surface);
+  color: var(--color-error-text);
+}
+
+@media (max-width: 52rem) {
+  .marketing-advice-intro {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 48rem) {
+  .marketing-advice-step { padding-top: var(--space-5); }
+  .marketing-advice-intro .marketing-advice-actions {
+    width: 100%;
+    margin-left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .marketing-advice-step--error .marketing-advice-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .marketing-advice-actions .home-button { width: 100%; }
+}

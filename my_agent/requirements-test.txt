@@ -1,0 +1,3 @@
+# Test-only dependencies; runtime requirements remain in requirements-backend.txt.
+-r requirements-backend.txt
+pytest==9.1.1
