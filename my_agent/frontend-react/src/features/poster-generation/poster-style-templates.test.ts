@@ -46,7 +46,12 @@ describe('poster style template catalog', () => {
       previewKind: 'asset',
     })
     for (const option of POSTER_STYLE_TEMPLATE_OPTIONS.slice(1)) {
-      expect(option.previewUrl).toMatch(/^data:image\/svg\+xml;base64,/)
+      expect(option.previewUrl).toMatch(
+        /^(?:data:image\/svg\+xml;|https?:\/\/|\/)/,
+      )
+      const previewUrl = new URL(option.previewUrl!, 'https://frontend.invalid')
+      expect(previewUrl.protocol).not.toBe('file:')
+      expect(previewUrl.href).not.toContain('\\')
     }
   })
 })

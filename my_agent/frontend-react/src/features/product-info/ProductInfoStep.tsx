@@ -19,7 +19,7 @@ export function ProductInfoStep() {
   const state = useWorkflowState()
   const dispatch = useWorkflowDispatch()
   const { requestAdvice } = useWorkflowAdviceCommands()
-  const { productInfo, platformCopy, workflowV2 } = state
+  const { productInfo, workflowV2 } = state
   const { errors, productImage, values } = productInfo
   const canContinue = canContinueFromProductInfo(values)
   const [hashing, setHashing] = useState(false)

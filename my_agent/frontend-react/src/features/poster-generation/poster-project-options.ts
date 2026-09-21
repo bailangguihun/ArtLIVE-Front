@@ -2,7 +2,6 @@ import type { PosterStyleTemplateId } from '../../types/poster-style-template'
 import {
   copyRefFromConfirmedCopy,
   createPosterProjectInput,
-  isAdviceCurrentForBasic,
   isPosterProjectCurrent,
 } from '../../state/workflow-v2/workflow-v2-authorities'
 import type {

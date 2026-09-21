@@ -67,7 +67,7 @@ export function PosterSlot({ binary, selected, slot }: PosterSlotProps) {
             objectUrl: URL.createObjectURL(blob),
           })
         })
-        .catch((error: unknown) => {
+        .catch(() => {
           if (controller.signal.aborted) {
             return
           }
@@ -75,10 +75,7 @@ export function PosterSlot({ binary, selected, slot }: PosterSlotProps) {
             type: 'POSTER_BINARY_FAILED',
             kind: 'preview',
             posterId,
-            error:
-              error instanceof PosterApiError
-                ? error.userMessage
-                : POSTER_PREVIEW_ERROR_MESSAGE,
+            error: POSTER_PREVIEW_ERROR_MESSAGE,
           })
         })
     }, 0)

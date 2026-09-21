@@ -192,16 +192,69 @@ export function PosterGenerationStep() {
 
   useEffect(() => {
     if (!v2PosterFlow || !v2Basic || !v2Advice || projectAdmission.current) return
+    if (!isAdviceCurrentForBasic(v2Advice, v2Basic)) return
     if (!posterProjectNeedsRefresh(v2Project, v2Basic, v2Advice, v2CurrentCopy)) return
-    void commitPosterProjectOptions({
+    let cancelled = false
+    const admissionId = projectCancellation.current + 1
+    projectCancellation.current = admissionId
+    projectAdmission.current = true
+    immediateBusy.current = false
+    const options = {
       generationKind: v2Project?.generationKind ?? DEFAULT_POSTER_GENERATION_KIND,
       typographyMode: v2Project?.typographyMode ?? DEFAULT_POSTER_TYPOGRAPHY_MODE,
       styleTemplateId:
         (v2Project?.generationKind ?? DEFAULT_POSTER_GENERATION_KIND) === 'template'
           ? v2Project?.styleTemplateId ?? defaultTemplateId()
           : null,
-    })
+    }
+    void Promise.resolve()
+      .then(() => {
+        if (cancelled || projectCancellation.current !== admissionId) return null
+        setModeSwitchPending(true)
+        setModeError('')
+        setStyleTemplateError('')
+        return createPosterProjectWithOptions({
+          projectId: globalThis.crypto.randomUUID(),
+          basic: v2Basic,
+          advice: v2Advice,
+          confirmedCopy: v2CurrentCopy,
+          ...options,
+        })
+      })
+      .then((project) => {
+        if (!project || cancelled || projectCancellation.current !== admissionId) return
+        const live = latestWorkflow.current.workflowV2
+        if (
+          live.phase !== 'active' ||
+          live.view !== 'poster' ||
+          live.epoch !== session.epoch ||
+          live.basicAuthority?.text.signatureSha256 !== v2Basic.text.signatureSha256 ||
+          live.basicAuthority?.settings.signatureSha256 !== v2Basic.settings.signatureSha256 ||
+          live.adviceAuthority?.inputSignatureSha256 !== v2Advice.inputSignatureSha256 ||
+          live.adviceAuthority?.adviceSignatureSha256 !== v2Advice.adviceSignatureSha256
+        ) return
+        dispatch({ type: 'COMMIT_V2_POSTER_PROJECT', project })
+      })
+      .catch(() => {
+        if (!cancelled && projectCancellation.current === admissionId) {
+          setModeError('无法准备海报生成方式，请重新选择。')
+        }
+      })
+      .finally(() => {
+        if (projectCancellation.current === admissionId) {
+          projectAdmission.current = false
+          setModeSwitchPending(false)
+        }
+      })
+    return () => {
+      cancelled = true
+      if (projectCancellation.current === admissionId) {
+        projectCancellation.current += 1
+        projectAdmission.current = false
+      }
+    }
   }, [
+    dispatch,
     v2PosterFlow,
     v2Basic,
     v2Advice,

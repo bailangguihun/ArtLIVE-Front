@@ -1,2 +1,0 @@
-"""Advertising poster application package."""
-

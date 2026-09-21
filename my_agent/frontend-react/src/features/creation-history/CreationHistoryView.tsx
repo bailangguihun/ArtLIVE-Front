@@ -84,14 +84,17 @@ export function CreationHistoryView({ onBackHome }: CreationHistoryViewProps) {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
 
+  const selectBatch = useCallback((id: string | null) => {
+    setSelectedId(id)
+    setSelectedBatch(null)
+  }, [])
+
   useEffect(() => {
     headingRef.current?.focus()
   }, [])
 
   useEffect(() => {
     let cancelled = false
-    setLoading(true)
-    setError('')
     void listCreationHistoryBatches()
       .then((rows) => {
         if (cancelled) return
@@ -111,37 +114,39 @@ export function CreationHistoryView({ onBackHome }: CreationHistoryViewProps) {
 
   useEffect(() => {
     if (!selectedId) {
-      setSelectedBatch(null)
       return
     }
     let cancelled = false
     void getCreationHistoryBatch(selectedId)
       .then((batch) => {
         if (cancelled) return
-        setSelectedBatch(batch)
-        if (!batch) setSelectedId(null)
+        if (batch) {
+          setSelectedBatch(batch)
+        } else {
+          selectBatch(null)
+        }
       })
       .catch(() => {
         if (cancelled) return
         setError('无法打开这条历史记录。')
-        setSelectedId(null)
+        selectBatch(null)
       })
     return () => {
       cancelled = true
     }
-  }, [selectedId])
+  }, [selectBatch, selectedId])
 
   const refreshList = useCallback(async () => {
     const rows = await listCreationHistoryBatches()
     setItems(rows)
     if (selectedId && !rows.some((item) => item.id === selectedId)) {
-      setSelectedId(null)
+      selectBatch(null)
     }
-  }, [selectedId])
+  }, [selectBatch, selectedId])
 
   const removeBatch = async (id: string) => {
     await deleteCreationHistoryBatch(id)
-    if (selectedId === id) setSelectedId(null)
+    if (selectedId === id) selectBatch(null)
     await refreshList()
   }
 
@@ -155,7 +160,7 @@ export function CreationHistoryView({ onBackHome }: CreationHistoryViewProps) {
         </header>
 
         <div className="creation-history__detail-actions">
-          <button className="text-action" onClick={() => setSelectedId(null)} type="button">
+          <button className="text-action" onClick={() => selectBatch(null)} type="button">
             返回列表
           </button>
           <button
@@ -272,7 +277,7 @@ export function CreationHistoryView({ onBackHome }: CreationHistoryViewProps) {
                   <p>{formatTimestamp(item.updatedAt)}</p>
                   <p>{artifactSummary(item)}</p>
                   <div className="creation-history__card-actions">
-                    <button onClick={() => setSelectedId(item.id)} type="button">查看详情</button>
+                    <button onClick={() => selectBatch(item.id)} type="button">查看详情</button>
                     <button data-action="destructive" onClick={() => void removeBatch(item.id)} type="button">删除</button>
                   </div>
                 </div>

@@ -7,7 +7,6 @@ import type {
 import {
   getPosterGeneration,
   POSTER_POLL_ERROR_MESSAGE,
-  PosterApiError,
 } from './poster-api'
 import { isTerminalSequenceStatus } from './poster-normalizer'
 
@@ -63,14 +62,11 @@ export function usePosterPolling(
             source: 'poll',
           })
         }
-      } catch (error) {
+      } catch {
         if (!disposed && !requestController.signal.aborted) {
           dispatch({
             type: 'SET_POSTER_POLL_ERROR',
-            error:
-              error instanceof PosterApiError
-                ? error.userMessage
-                : POSTER_POLL_ERROR_MESSAGE,
+            error: POSTER_POLL_ERROR_MESSAGE,
           })
         }
       } finally {

@@ -113,7 +113,7 @@ type MissingLegacyAction = Exclude<
 describe('Workflow V2 versions and strict canonicalization', () => {
   it('exposes the complete stable view, module, status, reason, and version vocabulary', () => {
     expect(WORKFLOW_V2_VIEW_IDS).toEqual([
-      'home', 'basic', 'advice', 'workspace', 'copy', 'poster', 'detail', 'results',
+      'home', 'history', 'basic', 'advice', 'workspace', 'copy', 'poster', 'detail', 'results',
     ])
     expect(WORKFLOW_V2_MODULE_IDS).toEqual(['copy', 'poster', 'detail'])
     expect(WORKFLOW_V2_MODULE_STATUSES).toEqual([

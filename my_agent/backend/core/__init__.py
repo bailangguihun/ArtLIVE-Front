@@ -1,2 +1,0 @@
-"""Backend configuration and logging."""
-
